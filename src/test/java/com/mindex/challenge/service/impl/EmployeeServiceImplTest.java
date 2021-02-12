@@ -1,7 +1,9 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
+import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -83,4 +86,31 @@ public class EmployeeServiceImplTest {
         assertEquals(expected.getDepartment(), actual.getDepartment());
         assertEquals(expected.getPosition(), actual.getPosition());
     }
+
+    @Test
+    public void testgetReportingStructure() {
+
+        final String employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+        final ReportingStructure repStr = employeeService.getReportingStructure(employeeId);
+        assertNotNull(repStr);
+
+        assertEquals(employeeId, repStr.getEmployee().getEmployeeId());
+        assertEquals(4, repStr.getNumberOfReports());
+    }
+
+    @Test
+    public void testgetReportingStructureEmployeeNotFound() {
+
+        assertEquals("Invalid employeeId: XXX",
+                assertThrows(RuntimeException.class, () -> employeeService.getReportingStructure("XXX")).getMessage());
+    }
+
+    @Test
+    public void testcountReportsEmployeeNotFound() {
+
+        assertEquals("Invalid employeeId: XXX",
+                assertThrows(RuntimeException.class, () -> ((EmployeeServiceImpl) employeeService).countReports("XXX"))
+                .getMessage());
+    }
+
 }
