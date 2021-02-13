@@ -1,0 +1,22 @@
+[
+  {
+    "employeeId" : "16a596ae-edd3-4847-99fe-c4518e82c86f",
+    "salary" : "100.00",
+    "effectiveDate": -315619200
+  },
+  {
+    "employeeId" : "16a596ae-edd3-4847-99fe-c4518e82c86f",
+    "salary" : "300.00",
+    "effectiveDate": 0
+  },
+  {
+    "employeeId" : "16a596ae-edd3-4847-99fe-c4518e82c86f",
+    "salary" : "10000.00",
+    "effectiveDate": 315532800
+  },
+  {
+    "employeeId" : "b7839309-3348-463b-a7e3-5de1c168beb3",
+    "salary" : "4444.44",
+    "effectiveDate": -631152000
+  }
+]
